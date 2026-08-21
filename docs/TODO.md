@@ -14,6 +14,10 @@
 - [ ] ADC/GPIO.
 - [ ] UART/CAN.
 - [ ] Schemat połączeń.
+- [x] Przygotować plan walidacji sensorów.
+- [ ] Wykonać pomiary PAS1/PAS2.
+- [ ] Wykonać pomiary speed sensora.
+- [ ] Zamknąć mapowanie GPIO/ICU.
 
 ## Etap 2 — LispBM
 - [ ] Scheduler.
