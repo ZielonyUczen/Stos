@@ -1,0 +1,10 @@
+{
+  "name": "vesc-bbs02b-package",
+  "version": "0.1.0",
+  "protocol_version": "0.1",
+  "target": {
+    "controller": "MKS 75200 v2",
+    "motor": "Bafang BBS02B"
+  },
+  "status": "architecture"
+}
