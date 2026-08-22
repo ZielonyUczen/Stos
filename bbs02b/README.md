@@ -9,6 +9,12 @@ Application package for a VESC-based Bafang BBS02B integration.
 - package descriptor
 - documented telemetry and protocol interfaces
 
+## Firmware requirement
+
+**VESC firmware 7.00 or newer is required.**
+
+The project baseline is `7.00+`. Individual APIs may have lower documented introduction versions, but that does not make older firmware supported by this Package.
+
 ## Target
 
 - VESC MKS 75200 v2
@@ -19,4 +25,4 @@ Application package for a VESC-based Bafang BBS02B integration.
 
 ## Important
 
-Hardware pin mapping, firmware compatibility and sensor electrical characteristics are not assumed here. They must be verified against authoritative documentation before implementation.
+Hardware pin mapping and sensor electrical characteristics are not assumed here. They must be verified against authoritative documentation before implementation.
