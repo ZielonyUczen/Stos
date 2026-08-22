@@ -16,6 +16,12 @@ Połączenie niskopoziomowego firmware VESC, LispBM oraz interfejsu QML/VESC Too
 6. Package — manifest, wersjonowanie i zasoby.
 7. Tests — testy obliczeń, protokołu i logiki.
 
+## Firmware
+
+**Wymagane minimum: VESC firmware 7.00.**
+
+Projekt nie wspiera firmware 6.x jako konfiguracji docelowej. Szczegóły polityki znajdują się w `docs/FIRMWARE_POLICY.md`.
+
 ## Projekt referencyjny
 
 - Bafang BBS02B
