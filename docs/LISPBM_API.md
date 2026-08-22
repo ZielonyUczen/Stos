@@ -4,19 +4,28 @@
 
 Ten dokument jest kontraktem projektowym dla warstwy LispBM. Wpisujemy tutaj tylko API potwierdzone w dokumentacji VESC/LispBM. Konkretne mapowanie pinów MKS 75200 v2 pozostaje osobnym zadaniem i nie jest zgadywane.
 
+## Projektowe wymaganie firmware
+
+```text
+MINIMUM_FW = 7.00
+SUPPORTED = 7.00+
+```
+
+Poniższa tabela pokazuje minimalną wersję firmware, od której dane API jest udokumentowane. Jest to informacja źródłowa; Package i tak wymaga globalnie firmware 7.00+.
+
 ## 1. Runtime
 
-| API | Platforma | FW | Zastosowanie |
+| API | Platforma | Dokumentowane od FW | Zastosowanie |
 |---|---|---:|---|
 | `sleep` | ESC/Express | 6.00+ | okresowa pętla aplikacji |
 | `print` | ESC/Express | 6.00+ | diagnostyka |
-| `puts` | ESC/Express | 6.05+ | diagnostyka tekstowa |
+| `puts` | ESC/Express | 6.05+ | diagnostyka |
 | `event-enable` | ESC/Express | 6.00+ | obsługa zdarzeń |
 | `event-register-handler` | ESC/Express | 6.00+ | handler zdarzeń |
 
 ## 2. Sterowanie silnikiem
 
-| API | Platforma | FW | Zastosowanie |
+| API | Platforma | Dokumentowane od FW | Zastosowanie |
 |---|---|---:|---|
 | `set-current` | ESC | 6.00+ | żądanie prądu silnika |
 | `app-disable-output` | ESC | 6.00+ | czasowe wyłączenie wyjścia aplikacji |
@@ -28,7 +37,7 @@ Ten dokument jest kontraktem projektowym dla warstwy LispBM. Wpisujemy tutaj tyl
 
 ## 3. PAS
 
-| API | Platforma | FW | Zastosowanie |
+| API | Platforma | Dokumentowane od FW | Zastosowanie |
 |---|---|---:|---|
 | `app-pas-get-rpm` | ESC | 6.00+ | odczyt RPM pedałów z aplikacji PAS |
 
@@ -38,7 +47,7 @@ Dla naszego Package najpierw sprawdzimy, czy natywna aplikacja PAS zapewnia wszy
 
 ## 4. Input Capture / speed sensor
 
-| API | Platforma | FW | Zastosowanie |
+| API | Platforma | Dokumentowane od FW | Zastosowanie |
 |---|---|---:|---|
 | `icu-start` | ESC | 6.02+ | pomiar szerokości/okresu impulsów |
 | `icu-width` | ESC | 6.02+ | ostatnia szerokość impulsu |
@@ -50,7 +59,7 @@ ICU działa na wejściu PPM. To nie oznacza jeszcze, że wejście PPM MKS 75200 
 
 ## 5. CAN
 
-| API | Platforma | FW | Zastosowanie |
+| API | Platforma | Dokumentowane od FW | Zastosowanie |
 |---|---|---:|---|
 | `canget-dist` | ESC/Express | 6.00+ | dystans z VESC po CAN |
 | `canget-speed` | ESC/Express | 6.00+ | prędkość z VESC po CAN |
@@ -81,9 +90,7 @@ QML customAppDataReceived()
 
 ## 7. Commands interface
 
-`cmds-start-stop` uruchamia interfejs komend VESC. Dokumentacja podaje, że wymaga on pamięci na interfejs pakietowy i stos wątku.
-
-Nie będziemy uruchamiać go bez potrzeby. Najpierw określimy, które funkcje są dostępne bezpośrednio przez istniejące mechanizmy LispBM.
+`cmds-start-stop` uruchamia interfejs komend VESC. Nie będziemy uruchamiać go bez potrzeby.
 
 ## 8. Configuration API
 
@@ -135,8 +142,9 @@ LispBM może logować dane do urządzeń logujących, w tym VESC Express po CAN.
 
 ## 12. Wnioski dla naszego Package
 
-### Potwierdzone i planowane
+### Obowiązujące
 
+- firmware minimum: **7.00**
 - okresowa pętla LispBM: `sleep`
 - sterowanie prądem: `set-current`
 - blokada wyjścia: `app-disable-output`
@@ -153,8 +161,7 @@ LispBM może logować dane do urządzeń logujących, w tym VESC Express po CAN.
 - dokładne wejścia PAS1/PAS2
 - dostępność konkretnych GPIO z LispBM na tej platformie
 - właściwa metoda odczytu oryginalnego PAS BBS02B
-- parametry firmware wymagane przez Package
-- wersja firmware, którą ustalimy jako minimum
+- konkretny build 7.00.x używany podczas release
 
 ## Źródła
 
