@@ -2,6 +2,10 @@
   "name": "vesc-bbs02b-package",
   "version": "0.1.0",
   "protocol_version": "0.1",
+  "required_firmware": {
+    "minimum": "7.00",
+    "policy": "7.00+"
+  },
   "target": {
     "controller": "MKS 75200 v2",
     "motor": "Bafang BBS02B"
