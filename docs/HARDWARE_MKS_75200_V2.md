@@ -1,4 +1,4 @@
-# MKS 75200 V2 — Hardware Baseline v0.1
+# MKS 75200 V2 — Hardware Baseline v0.2
 
 ## Opis
 
@@ -13,7 +13,8 @@ Ten dokument definiuje zweryfikowaną bazę sprzętową dla VESC Package. Nie tr
 | Rdzeń | ARM Cortex-M4 + FPU/DSP | VERIFIED |
 | Napięcie wg instrukcji | 14–84 V | VERIFIED |
 | Firmware model | `mksesc_75_200_v2` | VERIFIED |
-| Domyślny firmware | V6.02 | VERIFIED |
+| Historyczny firmware domyślny | V6.02 | VERIFIED |
+| **Projektowy firmware minimum** | **V7.00** | **PROJECT REQUIREMENT** |
 | Maks. ERPM podawane przez producenta/instrukcję | 150000 | VERIFIED |
 | PPM | dostępny | VERIFIED |
 | CAN | dostępny | VERIFIED |
@@ -22,6 +23,17 @@ Ten dokument definiuje zweryfikowaną bazę sprzętową dla VESC Package. Nie tr
 | COMM | dostępny | VERIFIED |
 | SENSOR | ABI/HALL/AS5047/AS5048A | VERIFIED |
 | ADC | dostępny przez interfejs sterowania | VERIFIED |
+
+## Firmware policy
+
+Projekt nie wspiera już firmware 6.x jako konfiguracji docelowej.
+
+```text
+MINIMUM_FW = 7.00
+SUPPORTED = 7.00+
+```
+
+Oficjalny changelog VESC Tool wskazuje wydanie 7.00 z 2026-05-15 oraz zmiany obejmujące LispBM, remapowanie pinów AS5047 i Hall oraz nowe rozszerzenia/parametry. Przed release sprawdzimy konkretny build 7.00.x używany na MKS 75200 V2.
 
 ## Interfejsy zidentyfikowane na poziomie złącza
 
@@ -64,6 +76,7 @@ Nie wpisujemy tych danych do kodu Package, dopóki nie zostaną zweryfikowane.
 1. Makerbase VESC-MKS: https://github.com/makerbase-mks/VESC-MKS
 2. Makerbase MKSESC 75200 V2 User Manual.
 3. VESC firmware/LispBM documentation.
+4. VESC Tool firmware changelog.
 
 ## Wniosek
 
