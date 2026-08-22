@@ -6,12 +6,21 @@ Ten dokument definiuje procedurę walidacji elektrycznej PAS1, PAS2 oraz zewnęt
 
 Celem jest ustalenie rzeczywistego typu sygnału i jego parametrów dla konkretnego zestawu BBS02B + MKS 75200 V2. Nie zakładamy mapowania GPIO na podstawie podobnych kontrolerów.
 
+## Firmware projektu
+
+```text
+MINIMUM_FW = 7.00
+SUPPORTED = 7.00+
+```
+
+Pomiary i późniejsze testy Package wykonujemy na firmware 7.00 lub nowszym.
+
 ## Fakty potwierdzone z dokumentacji
 
 - MKS 75200 V2 udostępnia interfejsy PPM, Analog/ADC, UART, I2C, USB i CAN.
 - Dokumentacja MKS podaje STM32F405RGT6.
 - Wejścia analogowe nie mogą otrzymywać więcej niż 3,3 V.
-- LispBM na VESC FW 6.02+ posiada Input Capture Unit (ICU) dla pinu PPM. ICU mierzy szerokość i okres impulsu.
+- LispBM posiada Input Capture Unit (ICU) dla pinu PPM.
 - `app-pas-get-rpm` zwraca RPM pedałowania z istniejącej aplikacji PAS VESC. Nie oznacza to automatycznie, że możemy nim odczytać fizyczny PAS BBS02B podłączony do dowolnego GPIO.
 - Dla BBS02B materiały użytkowników identyfikują typ PAS `DoubleSignal-24` jako 24 pola na obrót.
 - Zewnętrzny speed sensor jest osobnym sensorem od PAS i jego liczba impulsów na obrót koła musi być parametrem konfiguracji.
@@ -24,6 +33,7 @@ Celem jest ustalenie rzeczywistego typu sygnału i jego parametrów dla konkretn
 
 - [ ] Odczytać dokładny model z etykiety PCB/kontrolera.
 - [ ] Odczytać wersję firmware z VESC Tool.
+- [ ] Potwierdzić firmware 7.00+.
 - [ ] Zapisać datę/rewizję sprzętu, jeżeli jest dostępna.
 - [ ] Zrobić zdjęcie wszystkich złączy przed modyfikacją.
 
@@ -109,12 +119,13 @@ speed_filter
 Etap jest zamknięty dopiero, gdy mamy:
 
 1. konkretną rewizję MKS 75200 V2,
-2. potwierdzone złącze i wejście dla każdego sygnału,
-3. potwierdzone napięcia,
-4. potwierdzone poziomy logiczne,
-5. potwierdzoną częstotliwość,
-6. potwierdzoną kolejność PAS1/PAS2,
-7. potwierdzoną liczbę impulsów speed sensora.
+2. firmware 7.00+,
+3. potwierdzone złącze i wejście dla każdego sygnału,
+4. potwierdzone napięcia,
+5. potwierdzone poziomy logiczne,
+6. potwierdzoną częstotliwość,
+7. potwierdzoną kolejność PAS1/PAS2,
+8. potwierdzoną liczbę impulsów speed sensora.
 
 Dopiero wtedy `hardware.lisp`, `pas.lisp` i `speed.lisp` mogą otrzymać konkretne mapowanie sprzętowe.
 
@@ -123,3 +134,5 @@ Dopiero wtedy `hardware.lisp`, `pas.lisp` i `speed.lisp` mogą otrzymać konkret
 `SENSOR_VALIDATION = PLAN_READY`
 
 `HARDWARE_PIN_MAPPING = NOT_FINAL`
+
+`FIRMWARE_BASELINE = 7.00+`
