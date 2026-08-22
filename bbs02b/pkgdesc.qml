@@ -8,7 +8,11 @@ Item {
     property bool pkgQmlIsFullscreen: false
     property string pkgOutput: "bbs02b.vescpkg"
 
+    // Project firmware baseline: VESC 7.00+
     function isCompatible(fwRxParams) {
-        return fwRxParams.hwTypeStr().toLowerCase() == "vesc";
+        var hw = fwRxParams.hwTypeStr().toLowerCase();
+        var fw = Number(fwRxParams.fwVersion());
+
+        return hw == "vesc" && fw >= 7.00;
     }
 }
