@@ -10,9 +10,14 @@ Item {
 
     // Project firmware baseline: VESC 7.00+
     function isCompatible(fwRxParams) {
-        var hw = fwRxParams.hwTypeStr().toLowerCase();
-        var fw = Number(fwRxParams.fwVersion());
+        var hwType = fwRxParams.hwTypeStr().toLowerCase();
+        var major = fwRxParams.major;
+        var minor = fwRxParams.minor;
 
-        return hw == "vesc" && fw >= 7.00;
+        if (hwType != "vesc") {
+            return false;
+        }
+
+        return major > 7 || (major == 7 && minor >= 0);
     }
 }
