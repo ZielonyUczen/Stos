@@ -1,0 +1,3 @@
+# VESC Settings V1 — BBS02B / MKS 75200 v2
+
+Approved design specification for the dedicated VESC settings screen. The screen exposes a focused BBS02B + MKS 75200 v2 parameter set, uses ConfigParams as the source of truth, supports local edits and explicit READ/WRITE operations, critical-change confirmation, and a non-destructive BBS02B preset. The editor architecture is intended to expand later to full mcConfig/appConfig and additional parameter types.
