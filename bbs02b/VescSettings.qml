@@ -35,13 +35,24 @@ Item {
         hasRead = false
         pendingReads = 1
         statusText = "Reading motor settings..."
+        readTimeout.start()
         commands.getMcconf()
     }
 
     function onConfigUpdated() {
         if (pendingReads > 0) {
+            readTimeout.stop()
             pendingReads -= 1
             refreshSettings()
+        }
+    }
+
+    function onReadFailed() {
+        if (pendingReads > 0) {
+            readTimeout.stop()
+            pendingReads = 0
+            hasRead = false
+            statusText = "READ failed. Check the connection and try again."
         }
     }
 
@@ -137,6 +148,22 @@ Item {
     Connections {
         target: root.mcConf
         function onUpdated() { root.onConfigUpdated() }
+    }
+
+    Connections {
+        target: root.commands
+        function onDeserializeConfigFailed(isMc, isApp) {
+            if (isMc) {
+                root.onReadFailed()
+            }
+        }
+    }
+
+    Timer {
+        id: readTimeout
+        interval: 10000
+        repeat: false
+        onTriggered: root.onReadFailed()
     }
 
     Dialog {
