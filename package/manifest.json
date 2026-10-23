@@ -8,7 +8,21 @@
   },
   "target": {
     "controller": "MKS 75200 v2",
+    "firmware_hardware_id": "mksesc_75_200_v2",
     "motor": "Bafang BBS02B"
   },
-  "status": "architecture"
+  "resources": [
+    "../bbs02b/main.lisp",
+    "../bbs02b/hardware.lisp",
+    "../bbs02b/ui.qml",
+    "../bbs02b/VescSettings.qml"
+  ],
+  "required_apis": [
+    "ConfigParams",
+    "Commands.getMcconf",
+    "Commands.setMcconf"
+  ],
+  "hardware_validation": "required_before_sensor_use",
+  "motor_control": "disabled",
+  "status": "development"
 }
