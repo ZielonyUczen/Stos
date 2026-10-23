@@ -7,6 +7,8 @@ import Vedder.vesc.utility 1.0
 
 Item {
     id: root
+    width: 800
+    height: 480
 
     property ConfigParams mcConf: VescIf.mcConfig()
     property Commands commands: VescIf.commands()

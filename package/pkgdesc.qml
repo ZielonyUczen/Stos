@@ -4,7 +4,7 @@ Item {
     property string pkgName: "BBS02B VESC Package"
     property string pkgDescriptionMd: "../bbs02b/README.md"
     property string pkgLisp: "../bbs02b/main.lisp"
-    property string pkgQml: "../bbs02b/ui.qml"
+    property string pkgQml: "../bbs02b/VescSettings.qml"
     property bool pkgQmlIsFullscreen: false
     property string pkgOutput: "bbs02b.vescpkg"
 

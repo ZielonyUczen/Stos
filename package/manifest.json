@@ -14,7 +14,6 @@
   "resources": [
     "../bbs02b/main.lisp",
     "../bbs02b/hardware.lisp",
-    "../bbs02b/ui.qml",
     "../bbs02b/VescSettings.qml"
   ],
   "required_apis": [
