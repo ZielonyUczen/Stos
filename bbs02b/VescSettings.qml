@@ -153,6 +153,22 @@ Item {
         onAccepted: root.writeSettings()
     }
 
+    Dialog {
+        id: readConfirmation
+        title: "Discard staged changes?"
+        modal: true
+        standardButtons: Dialog.Yes | Dialog.Cancel
+        anchors.centerIn: parent
+
+        Label {
+            width: 360
+            wrapMode: Text.WordWrap
+            text: "Reading again replaces the local staged values with the controller's current motor configuration."
+        }
+
+        onAccepted: root.readSettings()
+    }
+
     ColumnLayout {
         anchors.fill: parent
         anchors.margins: 16
@@ -170,12 +186,19 @@ Item {
 
             Button {
                 text: "READ"
-                onClicked: root.readSettings()
+                enabled: root.pendingReads === 0
+                onClicked: {
+                    if (root.hasChanges()) {
+                        readConfirmation.open()
+                    } else {
+                        root.readSettings()
+                    }
+                }
             }
 
             Button {
                 text: "WRITE"
-                enabled: root.hasRead && root.hasChanges()
+                enabled: root.hasRead && root.hasChanges() && root.pendingReads === 0
                 onClicked: writeConfirmation.open()
             }
 
