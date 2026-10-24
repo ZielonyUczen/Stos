@@ -5,9 +5,9 @@ Application package for a VESC-based Bafang BBS02B integration.
 ## Current scope
 
 - LispBM application layer
-- QML configuration/dashboard layer
+- ConfigParams-backed motor settings screen with staged edits and explicit READ/WRITE
 - package descriptor
-- documented telemetry and protocol interfaces
+- versioned telemetry/data contract documented in `docs/PROTOCOL.md`
 
 ## Firmware requirement
 
@@ -25,4 +25,10 @@ The project baseline is `7.00+`. Individual APIs may have lower documented intro
 
 ## Important
 
-Hardware pin mapping and sensor electrical characteristics are not assumed here. They must be verified against authoritative documentation before implementation.
+The package descriptor requires the MKS firmware hardware identifier
+`mksesc_75_200_v2` and VESC firmware 7.00 or newer. Confirm that exact
+identifier against the target firmware build before release.
+
+Hardware pin mapping and sensor electrical characteristics remain unverified,
+so sensor inputs are unmapped and motor-control behavior is disabled. The
+BBS02B preset is withheld until approved configuration values are documented.

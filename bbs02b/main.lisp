@@ -1,10 +1,9 @@
 ; BBS02B VESC Package
-; Stage: architecture / verified API skeleton
-;
-; Do not enable motor-control logic until hardware and safety
-; requirements have been verified.
+; Sensor mappings and motor-control behavior remain disabled until
+; the target hardware, firmware API, and safety requirements are verified.
 
 (defun package-start ()
-  (puts "BBS02B VESC Package: init"))
+  (puts "BBS02B VESC Package: safe startup; hardware validation required")
+  true)
 
 (package-start)
